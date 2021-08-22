@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "210712405301",
+    "project_id": "food-dash-4f8d6",
+    "storage_bucket": "food-dash-4f8d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210712405301:android:cee5de1e222d9b31c8d87c",
+        "android_client_info": {
+          "package_name": "com.example.chowwe_rider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210712405301-8q2nhgaclll269bvn7gv1bjd155f8igq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyQP7hfNY6tAk6d42RrM7oBjzuHund2HQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210712405301-8q2nhgaclll269bvn7gv1bjd155f8igq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210712405301:android:bcd17f07ac6cfa60c8d87c",
+        "android_client_info": {
+          "package_name": "com.example.food_dash_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210712405301-8q2nhgaclll269bvn7gv1bjd155f8igq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyQP7hfNY6tAk6d42RrM7oBjzuHund2HQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210712405301-8q2nhgaclll269bvn7gv1bjd155f8igq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
