@@ -29,6 +29,7 @@ class RiderBloc extends Bloc<RiderEvent, RiderState> {
         await riderRepo.chagneOrderStatus(
           event.id,
           OrderStatusExtension.eumnToString(event.orderStatus),
+          completed: event.orderStatus == OrderStatusEunm.completed,
         );
         yield ChangeOrderStatusLoadedState();
       } on Exception catch (e, s) {

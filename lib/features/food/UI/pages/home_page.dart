@@ -65,9 +65,15 @@ class HomePage extends StatelessWidget {
                     ),
                     SizedBox(height: sizerSp(40.0)),
                     WalletOptionItemWidget(
-                      title: 'I’m available for delivery',
+                      title: 'I’m available for Food delivery',
                       callback: () => CustomNavigationService()
                           .navigateTo(RouteName.oderPageScreen),
+                    ),
+                    SizedBox(height: sizerSp(10.0)),
+                    WalletOptionItemWidget(
+                      title: 'I’m available for Market Item delivery',
+                      callback: () => CustomNavigationService()
+                          .navigateTo(RouteName.marketOderPageScreen),
                     ),
                     SizedBox(height: sizerSp(10.0)),
                     WalletOptionItemWidget(

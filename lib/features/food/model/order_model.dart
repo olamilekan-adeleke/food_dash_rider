@@ -4,11 +4,6 @@ import 'package:chowwe_rider/features/auth/model/user_details_model.dart';
 import 'package:chowwe_rider/features/food/model/cart_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
-
-
-
-
 class OrderModel {
   const OrderModel({
     required this.items,
@@ -21,6 +16,7 @@ class OrderModel {
     this.restaurantsList,
     this.riderDetails,
     this.hasRated,
+    this.payStatus,
     this.userId,
   });
 
@@ -51,6 +47,7 @@ class OrderModel {
             )
           : null,
       hasRated: map['has_rated'] as bool,
+      payStatus: map['pay_status'] != null ? map['pay_status'] as String : null,
       itemsFee: (map['items_fee'] ?? 0) as int,
       deliveryFee: (map['delivery_fee'] ?? 0) as int,
     );
@@ -60,6 +57,7 @@ class OrderModel {
   final Timestamp? timestamp;
   final RiderDetailsModel userDetails;
   final String id;
+  final String? payStatus;
   final String? userId;
   final List<String>? restaurantsList;
   final OrderStatusEunm? orderStatus;

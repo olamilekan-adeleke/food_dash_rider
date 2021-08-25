@@ -14,6 +14,7 @@ class RouteName {
   static const String withdrawalHistoryScreen = 'withdrawal-history';
   static const String wallet = 'wallet';
   static const String oderPageScreen = 'order-page';
+  static const String marketOderPageScreen = 'market-order-page';
   static const String selectedOderScreen = 'selected-order-page';
   static const String changePasswordScreen = 'change-password';
   static const String verifyRiderScreen = 'verify-rider-page';

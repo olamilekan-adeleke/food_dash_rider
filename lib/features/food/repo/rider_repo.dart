@@ -1,4 +1,5 @@
 import 'package:chowwe_rider/cores/utils/extenions.dart';
+import 'package:chowwe_rider/cores/utils/snack_bar_service.dart';
 import 'package:chowwe_rider/features/auth/model/user_details_model.dart';
 import 'package:chowwe_rider/features/auth/repo/auth_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -56,9 +57,18 @@ class RiderRepo {
     }
   }
 
-  Future<void> chagneOrderStatus(String id, String status) async {
+  Future<void> chagneOrderStatus(String id, String status,
+      {bool completed = false}) async {
     try {
-      await orderCollectionRef.doc(id).update({'order_status': status});
+      await orderCollectionRef.doc(id).update({
+        'order_status': status,
+        if (completed == true) 'pay_status': 'pending',
+      });
+
+      if (completed) {
+        CustomSnackBarService.showSuccessSnackBar(
+            'Confrimation Message Sent To User!');
+      }
     } on Exception catch (e) {
       throw Exception(e.toString());
     }

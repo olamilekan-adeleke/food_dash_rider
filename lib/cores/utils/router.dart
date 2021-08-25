@@ -1,5 +1,6 @@
 import 'package:chowwe_rider/features/food/UI/pages/current_orders_screen.dart';
 import 'package:chowwe_rider/features/food/UI/pages/eidt_profile_screen.dart';
+import 'package:chowwe_rider/features/food/UI/pages/market_order_screen.dart';
 import 'package:chowwe_rider/features/food/UI/pages/oder_history_screen.dart';
 import 'package:chowwe_rider/features/food/UI/pages/order_screen.dart';
 import 'package:chowwe_rider/features/food/UI/pages/profile_screen.dart';
@@ -64,6 +65,10 @@ Route<dynamic>? generateRoute(RouteSettings settings) {
     case RouteName.oderPageScreen:
       return MaterialPageRoute<Widget>(
           builder: (BuildContext context) => const OrderScreen());
+
+    case RouteName.marketOderPageScreen:
+      return MaterialPageRoute<Widget>(
+          builder: (BuildContext context) => const MarketOrderScreen());
 
     case RouteName.selectedOderScreen:
       if (settings.arguments is OrderModel) {

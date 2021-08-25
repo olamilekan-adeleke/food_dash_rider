@@ -69,9 +69,10 @@ class CurrentOrders extends StatelessWidget {
                   ),
                 ),
                 query: RiderRepo.orderCollectionRef
-                    .where('order_status', whereNotIn: ['pending', 'completed'])
+                    // .where('order_status', isNotEqualTo: 'pending')
+                    .where('pay_status', isNotEqualTo: 'confrim')
                     .where('rider_id', isEqualTo: id)
-                    .orderBy('order_status', descending: true),
+                    .orderBy('pay_status', descending: true),
                 itemBuilderType: PaginateBuilderType.gridView,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
@@ -195,6 +196,17 @@ class OrderItemsWidegtII extends StatelessWidget {
                     fontWeight: FontWeight.w200,
                   ),
                   SizedBox(height: sizerSp(10)),
+                  CustomTextWidget(
+                    text: 'Confrimation Status',
+                    fontSize: sizerSp(12),
+                    fontWeight: FontWeight.w600,
+                  ),
+                  CustomTextWidget(
+                    text: order.payStatus?.toUpperCase() ?? 'PENDING',
+                    fontSize: sizerSp(12),
+                    fontWeight: FontWeight.w200,
+                  ),
+                  SizedBox(height: sizerSp(10)),
                 ],
               ),
             ),
@@ -222,6 +234,9 @@ class OrderItemsWidegtII extends StatelessWidget {
                       builder: (context) => OrderCompleteScreen(order)));
                   break;
                 case OrderStatusEunm.completed:
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) =>
+                          OrderCompleteScreen(order, retry: true)));
                   break;
                 case OrderStatusEunm.Null:
                   break;

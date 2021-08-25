@@ -2,11 +2,8 @@ import 'package:chowwe_rider/cores/components/custom_button.dart';
 import 'package:chowwe_rider/cores/components/custom_scaffold_widget.dart';
 import 'package:chowwe_rider/cores/components/custom_text_widget.dart';
 import 'package:chowwe_rider/cores/utils/locator.dart';
-import 'package:chowwe_rider/cores/utils/navigator_service.dart';
-import 'package:chowwe_rider/cores/utils/route_name.dart';
 import 'package:chowwe_rider/cores/utils/snack_bar_service.dart';
 import 'package:chowwe_rider/features/auth/repo/auth_repo.dart';
-import 'package:chowwe_rider/features/food/UI/pages/selected_order_screen.dart';
 import 'package:chowwe_rider/features/food/UI/widgets/header_widget.dart';
 import 'package:chowwe_rider/features/food/bloc/rider_bloc.dart';
 import 'package:chowwe_rider/features/food/model/cart_model.dart';
@@ -18,8 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:paginate_firestore/paginate_firestore.dart';
 import '../../../../cores/utils/sizer_utils.dart';
 
-class OrderScreen extends StatelessWidget {
-  const OrderScreen();
+class MarketOrderScreen extends StatelessWidget {
+  const MarketOrderScreen();
 
   static final AuthenticationRepo authenticationRepo =
       locator<AuthenticationRepo>();
@@ -36,7 +33,7 @@ class OrderScreen extends StatelessWidget {
             // shrinkWrap: true,
             children: <Widget>[
               SizedBox(height: sizerSp(20.0)),
-              const HeaderWidget(iconData: null, title: 'Orders'),
+              const HeaderWidget(iconData: null, title: 'MarketOrders'),
               SizedBox(height: sizerSp(10.0)),
               Expanded(
                 // height: MediaQuery.of(context).size.height * 0.70,
@@ -79,7 +76,7 @@ class OrderScreen extends StatelessWidget {
                   ),
                   query: RiderRepo.orderCollectionRef
                       .orderBy('timestamp', descending: true)
-                      .where('type', isEqualTo: 'food')
+                      .where('type', isEqualTo: 'market')
                       .where('order_status', isEqualTo: 'pending'),
                   itemBuilderType: PaginateBuilderType.gridView,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

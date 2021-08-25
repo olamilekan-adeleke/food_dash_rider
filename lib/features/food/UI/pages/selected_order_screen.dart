@@ -2,7 +2,7 @@ import 'package:chowwe_rider/cores/components/custom_button.dart';
 import 'package:chowwe_rider/cores/components/custom_scaffold_widget.dart';
 import 'package:chowwe_rider/cores/components/custom_text_widget.dart';
 import 'package:chowwe_rider/cores/utils/snack_bar_service.dart';
-import 'package:chowwe_rider/features/food/UI/pages/home_page.dart';
+import 'package:chowwe_rider/features/food/UI/pages/home_tab_pages.dart';
 import 'package:chowwe_rider/features/food/UI/widgets/header_widget.dart';
 import 'package:chowwe_rider/features/food/bloc/rider_bloc.dart';
 import 'package:chowwe_rider/features/food/model/cart_model.dart';
@@ -259,8 +259,9 @@ class OrderEnrouteScreen extends StatelessWidget {
 }
 
 class OrderCompleteScreen extends StatelessWidget {
-  OrderCompleteScreen(this.order);
+  OrderCompleteScreen(this.order, {this.retry = false});
   final OrderModel order;
+  final bool retry;
 
   static final RiderRepo repo = locator<RiderRepo>();
 
@@ -320,7 +321,18 @@ class OrderCompleteScreen extends StatelessWidget {
 
                       return CustomButton(
                         text: 'Done',
-                        onTap: () => Get.offAll(HomePage()),
+                        onTap: () {
+                          if (retry) {
+                            BlocProvider.of<RiderBloc>(context)
+                                .add(ChangeOrderStatusEvent(
+                              order.id,
+                              OrderStatusEunm.completed,
+                            ));
+                            Get.offAll(HomeTabScreen());
+                          } else {
+                            Get.offAll(HomeTabScreen());
+                          }
+                        },
                       );
                     },
                   ),
