@@ -65,7 +65,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           keyboardType: widget.textInputType,
           obscureText: value,
           validator: (String? val) => widget.validator!(val?.trim()),
-          onTap: () => widget.ontap!(),
+          onTap: () {
+            if (widget.ontap == null) return;
+            
+            widget.ontap!();
+          },
         );
       },
     );

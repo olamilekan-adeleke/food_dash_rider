@@ -214,7 +214,7 @@ class WalletBalanceWidget extends StatelessWidget {
         AsyncSnapshot<DocumentSnapshot<Map<String, dynamic>>> snapshot,
       ) {
         final RiderDetailsModel userDetails = RiderDetailsModel.fromMap(
-          snapshot.data!.data() ?? <String, dynamic>{},
+          snapshot.data?.data() ?? <String, dynamic>{},
         );
         return Container(
           padding: EdgeInsets.all(sizerSp(10.0)),

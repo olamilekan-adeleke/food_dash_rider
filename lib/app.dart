@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           DeviceType deviceType,
         ) =>
             MaterialApp(
-          title: 'Food Dash',
+          title: 'Jolobbi rider',
           theme: ThemeData(primaryColor: const Color(0xffFF9A02)),
           navigatorKey: StackedService.navigatorKey,
           onGenerateRoute: generateRoute,

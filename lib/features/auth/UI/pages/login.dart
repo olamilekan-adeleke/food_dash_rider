@@ -162,26 +162,26 @@ class LoginPage extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: sizerSp(20.0)),
-                  InkWell(
-                    onTap: () =>
-                        CustomNavigationService().navigateTo(RouteName.signup),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        CustomTextWidget(
-                          text: 'Not a member? ',
-                          fontSize: sizerSp(11.24),
-                          fontWeight: FontWeight.w600,
-                        ),
-                        CustomTextWidget(
-                          text: 'Create and account',
-                          fontSize: sizerSp(11.24),
-                          fontWeight: FontWeight.w600,
-                          textColor: Colors.red,
-                        ),
-                      ],
-                    ),
-                  ),
+                  // InkWell(
+                  //   onTap: () =>
+                  //       CustomNavigationService().navigateTo(RouteName.signup),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: <Widget>[
+                  //       CustomTextWidget(
+                  //         text: 'Not a member? ',
+                  //         fontSize: sizerSp(11.24),
+                  //         fontWeight: FontWeight.w600,
+                  //       ),
+                  //       CustomTextWidget(
+                  //         text: 'Create and account',
+                  //         fontSize: sizerSp(11.24),
+                  //         fontWeight: FontWeight.w600,
+                  //         textColor: Colors.red,
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),
