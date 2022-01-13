@@ -1,3 +1,5 @@
+import 'package:chowwe_rider/cores/components/image_widget.dart';
+import 'package:chowwe_rider/cores/constants/asset.dart';
 import 'package:chowwe_rider/cores/constants/color.dart';
 import 'package:chowwe_rider/cores/utils/navigator_service.dart';
 import 'package:chowwe_rider/cores/utils/route_name.dart';
@@ -10,6 +12,7 @@ import 'package:chowwe_rider/cores/components/custom_text_widget.dart';
 import 'package:chowwe_rider/cores/utils/sizer_utils.dart';
 
 import 'package:chowwe_rider/features/food/UI/widgets/header_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -44,6 +47,29 @@ class HomePage extends StatelessWidget {
               ) {
                 if (user == null) {
                   return Container();
+                }
+
+                if (user.hasBeenApproved == false) {
+                  return Padding(
+                    padding: EdgeInsets.all(sizerSp(20)),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width: sizerWidth(80),
+                          height: sizerHeight(15),
+                          child: SvgPicture.asset('assets/images/pending.svg'),
+                        ),
+                        SizedBox(height: sizerSp(20.0)),
+                        CustomTextWidget(
+                          text:
+                              'You have not been approved our admins yet, please contact our support team for more information',
+                          fontSize: sizerSp(14),
+                          fontWeight: FontWeight.bold,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  );
                 }
 
                 return Column(
