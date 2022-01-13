@@ -142,7 +142,7 @@ class AuthenticationRepo {
       );
 
       await localDatabaseRepo
-          .saveUserDataToLocalDB(userDetailsForLocalDb.toMap());
+          .saveUserDataToLocalDB(userDetailsForLocalDb.toMapForLocalDb());
     } catch (e, s) {
       errorLog(
         e.toString(),
@@ -185,9 +185,7 @@ class AuthenticationRepo {
   }
 
   Future<void> addUserDataToFirestore(RiderDetailsModel userDetails) async {
-    await userCollectionRef
-        .doc(userDetails.uid)
-        .set(userDetails.toMapForLocalDb());
+    await userCollectionRef.doc(userDetails.uid).set(userDetails.toMap());
     infoLog('Added User database', title: 'Add user data To Db');
   }
 
