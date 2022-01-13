@@ -15,8 +15,8 @@ class PaymentPage extends StatelessWidget {
   static final ValueNotifier<PaymentType> paymentType =
       ValueNotifier<PaymentType>(PaymentType.none);
 
-  static final LocaldatabaseRepo localdatabaseRepo =
-      GetIt.instance<LocaldatabaseRepo>();
+  static final LocalDatabaseRepo localdatabaseRepo =
+      GetIt.instance<LocalDatabaseRepo>();
 
   static final PaymentRepo paymentRepo = GetIt.instance<PaymentRepo>();
   @override

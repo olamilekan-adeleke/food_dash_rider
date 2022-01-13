@@ -27,7 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           event.email,
           event.password,
         );
-        yield const AuthLoginLoadedState(loginSucessMessage);
+        yield const AuthLoginLoadedState(loginSuccessMessage);
       } catch (e, s) {
         debugPrint(e.toString());
         debugPrint(s.toString());
@@ -42,8 +42,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           fullName: event.fullName,
           number: event.number,
           dob: event.dob,
+          company: event.company,
         );
-        yield const AuthSignUpLoadedState(signUpSucessMessage);
+        yield const AuthSignUpLoadedState(signUpSuccessMessage);
       } catch (e, s) {
         debugPrint(e.toString());
         debugPrint(s.toString());
@@ -53,7 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       try {
         yield AuthForgotPasswordLoadingState();
         await authenticationRepo.resetPassword(event.email);
-        yield const AuthForgotPasswordLoadedState(forgotPasswordSucessMessage);
+        yield const AuthForgotPasswordLoadedState(forgotPasswordSuccessMessage);
       } catch (e, s) {
         debugPrint(e.toString());
         debugPrint(s.toString());

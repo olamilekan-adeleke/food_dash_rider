@@ -1,3 +1,4 @@
+import 'package:chowwe_rider/features/auth/model/user_details_model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,10 @@ class SignUpPage extends StatelessWidget {
       TextEditingController();
   static final TextEditingController dobTextEditingController =
       TextEditingController();
+  static final TextEditingController companyNameEditingController =
+      TextEditingController();
+  static final TextEditingController companyContactEditingController =
+      TextEditingController();
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void pickDateTime(BuildContext context) async {
@@ -51,6 +56,8 @@ class SignUpPage extends StatelessWidget {
       firstNameTextEditingController.text = 'ola';
       lastNameTextEditingController.text = 'rider';
       numberTextEditingController.text = '09088776655';
+      companyNameEditingController.text = 'Jolobbi Company';
+      companyContactEditingController.text = '07052936789';
     }
 
     return CustomScaffoldWidget(
@@ -118,9 +125,25 @@ class SignUpPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
                 CustomTextField(
+                  textEditingController: companyNameEditingController,
+                  hintText: 'Enter Company Name',
+                  labelText: 'Company Name',
+                  validator: (String? text) =>
+                      formFieldValidator(text, 'Company Name', 2),
+                ),
+                const SizedBox(height: 20.0),
+                CustomTextField(
+                  textEditingController: companyContactEditingController,
+                  hintText: 'Enter Company Phone Number',
+                  labelText: 'Company Phone Number',
+                  validator: (String? text) =>
+                      formFieldValidator(text, 'Company Phone Number', 10),
+                ),
+                const SizedBox(height: 20.0),
+                CustomTextField(
                   textEditingController: passwordTextEditingController,
                   hintText: 'Enter Password',
-                  labelText: 'Pasword',
+                  labelText: 'Password',
                   isPassword: true,
                   validator: (String? text) =>
                       formFieldValidator(text, 'Password', 5),
@@ -172,6 +195,12 @@ class SignUpPage extends StatelessWidget {
                               number: int.parse(
                                   numberTextEditingController.text.trim()),
                               dob: dobTextEditingController.text,
+                              company: CompanyData(
+                                companyName:
+                                    companyNameEditingController.text.trim(),
+                                companyContact:
+                                    companyContactEditingController.text.trim(),
+                              ),
                             ),
                           );
                         }

@@ -14,8 +14,8 @@ class Config {
   static const String userDataBox = 'user';
   static const String cartDataBox = 'cart';
   static final SnackbarService _snackbarService = locator<SnackbarService>();
-  static final LocaldatabaseRepo _localdatabaseRepo =
-      locator<LocaldatabaseRepo>();
+  static final LocalDatabaseRepo _localdatabaseRepo =
+      locator<LocalDatabaseRepo>();
   static final PaystackPlugin paystackPlugin = PaystackPlugin();
 
   static void setUpSnackBarConfig() {

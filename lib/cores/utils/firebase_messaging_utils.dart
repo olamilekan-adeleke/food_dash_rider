@@ -77,7 +77,7 @@ class NotificationMethods {
     });
   }
 
-  static Future<void> subscribeToTopice(String topic) async {
+  static Future<void> subscribeToTopic(String topic) async {
     await firebaseMessaging.subscribeToTopic(topic);
   }
 

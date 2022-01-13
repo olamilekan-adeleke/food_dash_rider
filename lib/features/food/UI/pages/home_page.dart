@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: sizerSp(20.0)),
             ValueListenableBuilder<RiderDetailsModel?>(
-              valueListenable: LocaldatabaseRepo.userDetail,
+              valueListenable: LocalDatabaseRepo.userDetail,
               builder: (
                 BuildContext context,
                 RiderDetailsModel? user,

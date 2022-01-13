@@ -15,15 +15,15 @@ import 'package:stacked_services/stacked_services.dart';
 
 class AuthenticationRepo {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-  static final LocaldatabaseRepo localdatabaseRepo =
-      GetIt.instance<LocaldatabaseRepo>();
+  static final LocalDatabaseRepo localDatabaseRepo =
+      GetIt.instance<LocalDatabaseRepo>();
   final CollectionReference<dynamic> userCollectionRef =
       FirebaseFirestore.instance.collection('rider');
 
   LoginUserModel? userFromFirestore(User? user) {
     infoLog(
       'User: ${user?.uid}',
-      message: 'attemping to get user auth state',
+      message: 'attempting to get user auth state',
       title: 'auth state',
     );
     return user != null ? LoginUserModel(user.uid) : null;
@@ -62,15 +62,15 @@ class AuthenticationRepo {
 
       final Map<String, dynamic> userData = await getLoggedInUser(email);
       userData.remove('date_joined');
-      await localdatabaseRepo.saveUserDataToLocalDB(userData);
-      await NotificationMethods.subscribeToTopice(user!.uid);
-      await NotificationMethods.subscribeToTopice('riders');
+      await localDatabaseRepo.saveUserDataToLocalDB(userData);
+      await NotificationMethods.subscribeToTopic(user!.uid);
+      await NotificationMethods.subscribeToTopic('riders');
     } on SocketException {
       throw Exception(noInternetConnectionText);
     } catch (e, s) {
       errorLog(
         e.toString(),
-        'Error loging in user',
+        'Error logging in user',
         title: 'login',
         trace: s.toString(),
       );
@@ -81,7 +81,7 @@ class AuthenticationRepo {
   Future<bool> authenticateUser(String password) async {
     bool authenticated = false;
     final String email =
-        (await localdatabaseRepo.getUserDataFromLocalDB())!.email;
+        (await localDatabaseRepo.getUserDataFromLocalDB())!.email;
 
     final UserCredential userCredential = await _firebaseAuth
         .signInWithEmailAndPassword(email: email, password: password);
@@ -99,6 +99,7 @@ class AuthenticationRepo {
     required String dob,
     required String fullName,
     required int number,
+    required CompanyData company,
   }) async {
     try {
       //sign up user with email and password
@@ -109,7 +110,7 @@ class AuthenticationRepo {
 
       // if for what ever reason the user object is null, then just return
       //an exception
-      if (user == null) throw Exception('Opps, an error occured!');
+      if (user == null) throw Exception('Opps, an error occurred!');
 
       final RiderDetailsModel userDetailsModel = RiderDetailsModel(
         uid: user.uid,
@@ -119,6 +120,8 @@ class AuthenticationRepo {
         phoneNumber: number,
         dateJoined: Timestamp.now(),
         dob: dob,
+        company: company,
+        hasBeenApproved: false,
       );
 
       infoLog('userCredential: ${user.uid}', title: 'user sign up');
@@ -127,7 +130,7 @@ class AuthenticationRepo {
       await addUserDataToFirestore(userDetailsModel);
 
       //subscribe user to notifications.
-      await NotificationMethods.subscribeToTopice(user.uid);
+      await NotificationMethods.subscribeToTopic(user.uid);
 
       final RiderDetailsModel userDetailsForLocalDb = RiderDetailsModel(
         uid: user.uid,
@@ -138,12 +141,12 @@ class AuthenticationRepo {
         dob: dob,
       );
 
-      await localdatabaseRepo
+      await localDatabaseRepo
           .saveUserDataToLocalDB(userDetailsForLocalDb.toMap());
     } catch (e, s) {
       errorLog(
         e.toString(),
-        'Error siging up in user',
+        'Error signing up in user',
         title: 'sign up',
         trace: s.toString(),
       );
@@ -169,7 +172,7 @@ class AuthenticationRepo {
     try {
       await _firebaseAuth.signOut();
       Get.back();
-      infoLog('user loging out', title: 'log out');
+      infoLog('user logging out', title: 'log out');
     } catch (e, s) {
       errorLog(
         e.toString(),
@@ -191,8 +194,8 @@ class AuthenticationRepo {
   Future<void> updateUserData(RiderDetailsModel userDetails) async {
     try {
       await userCollectionRef.doc(userDetails.uid).update(userDetails.toMap());
-      await localdatabaseRepo.saveUserDataToLocalDB(userDetails.toMap());
-      infoLog('Upadted User database', title: 'Upadted user data To Db');
+      await localDatabaseRepo.saveUserDataToLocalDB(userDetails.toMap());
+      infoLog('Updated User database', title: 'Updated user data To Db');
     } catch (e, s) {
       debugPrint(e.toString());
       debugPrint(s.toString());

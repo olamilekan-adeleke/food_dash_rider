@@ -64,8 +64,8 @@ class FundWalletDetailsWidget extends StatelessWidget {
   }) : super(key: key);
 
   static final PaymentRepo paymentRepo = locator<PaymentRepo>();
-  static final LocaldatabaseRepo localdatabaseRepo =
-      locator<LocaldatabaseRepo>();
+  static final LocalDatabaseRepo localdatabaseRepo =
+      locator<LocalDatabaseRepo>();
   static final TextEditingController textEditingController =
       TextEditingController();
 

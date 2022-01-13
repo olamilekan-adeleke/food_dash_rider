@@ -12,8 +12,8 @@ class RiderRepo {
   static AuthenticationRepo authenticationRepo =
       GetIt.instance<AuthenticationRepo>();
 
-  static final LocaldatabaseRepo localdatabaseRepo =
-      GetIt.instance<LocaldatabaseRepo>();
+  static final LocalDatabaseRepo localdatabaseRepo =
+      GetIt.instance<LocalDatabaseRepo>();
   final CollectionReference<Map<String, dynamic>> riderCollectionRef =
       FirebaseFirestore.instance.collection('rider');
 

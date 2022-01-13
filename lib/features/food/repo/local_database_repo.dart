@@ -7,7 +7,7 @@ import 'package:chowwe_rider/features/auth/model/user_details_model.dart';
 
 import 'package:get_storage/get_storage.dart';
 
-class LocaldatabaseRepo {
+class LocalDatabaseRepo {
   static const String userDataBoxName = 'user_data';
   static const String cartName = 'cart';
   static final GetStorage box = GetStorage('box');

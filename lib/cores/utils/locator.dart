@@ -13,6 +13,6 @@ void setUpLocator() {
   locator.registerLazySingleton<NavigationService>(() => NavigationService());
   locator.registerLazySingleton<RiderRepo>(() => RiderRepo());
   locator.registerLazySingleton<SnackbarService>(() => SnackbarService());
-  locator.registerLazySingleton<LocaldatabaseRepo>(() => LocaldatabaseRepo());
+  locator.registerLazySingleton<LocalDatabaseRepo>(() => LocalDatabaseRepo());
   locator.registerLazySingleton<PaymentRepo>(() => PaymentRepo());
 }

@@ -30,6 +30,7 @@ class SignUpUserEvent extends AuthEvent {
     required this.fullName,
     required this.number,
     required this.dob,
+    required this.company,
   });
 
   final String email;
@@ -37,6 +38,7 @@ class SignUpUserEvent extends AuthEvent {
   final String fullName;
   final String dob;
   final int number;
+  final CompanyData company;
 }
 
 /// bloc event for forgot password, accept email<String>
@@ -53,6 +55,4 @@ class LogOutEvent extends AuthEvent {}
 class UpdateUserDataEvent extends AuthEvent {
   const UpdateUserDataEvent(this.userDetailsModel);
   final RiderDetailsModel userDetailsModel;
-
-  
 }

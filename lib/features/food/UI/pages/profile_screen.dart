@@ -14,8 +14,8 @@ import 'package:chowwe_rider/features/food/repo/local_database_repo.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen();
 
-  static final LocaldatabaseRepo localdatabaseRepo =
-      locator<LocaldatabaseRepo>();
+  static final LocalDatabaseRepo localdatabaseRepo =
+      locator<LocalDatabaseRepo>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: sizerSp(20.0)),
             ValueListenableBuilder<RiderDetailsModel?>(
-              valueListenable: LocaldatabaseRepo.userDetail,
+              valueListenable: LocalDatabaseRepo.userDetail,
               builder: (
                 BuildContext context,
                 RiderDetailsModel? user,
