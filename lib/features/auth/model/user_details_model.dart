@@ -14,6 +14,8 @@ class RiderDetailsModel {
     this.dateJoined,
     required this.dob,
     required this.walletBalance,
+    this.hasBeenApproved = false,
+    this.company,
   });
 
   factory RiderDetailsModel.fromMap(Map<String, dynamic>? map) {
@@ -33,6 +35,12 @@ class RiderDetailsModel {
       dateJoined:
           map['date_joined'] != null ? map['date_joined'] as Timestamp : null,
       dob: map['dob'] != null ? map['dob'] as String : '1991-01-01',
+      company: map['company'] != null
+          ? CompanyData.fromMap(map['company'] as Map<String, dynamic>)
+          : null,
+      hasBeenApproved: map['has_been_approved'] != null
+          ? map['has_been_approved'] as bool
+          : false,
     );
   }
 
@@ -49,6 +57,8 @@ class RiderDetailsModel {
   final String? profilePicUrl;
   final Timestamp? dateJoined;
   final double? walletBalance;
+  final bool hasBeenApproved;
+  final CompanyData? company;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,6 +71,7 @@ class RiderDetailsModel {
       'address': address,
       'region': region,
       'dob': dob,
+      'has_been_approved': hasBeenApproved,
     };
   }
 
@@ -74,6 +85,7 @@ class RiderDetailsModel {
       'address': address,
       'region': region,
       'dob': dob,
+      'has_been_approved': hasBeenApproved,
     };
   }
 
@@ -104,4 +116,34 @@ class RiderDetailsModel {
       region: region ?? this.region,
     );
   }
+}
+
+class CompanyData {
+  final String? companyName;
+  final String? companyContact;
+
+  CompanyData({this.companyName, this.companyContact});
+
+  @override
+  String toString() =>
+      'CompanyData(companyName: $companyName, companyContact: $companyContact)';
+
+  Map<String, dynamic> toMap() {
+    return {
+      'companyName': companyName,
+      'companyContact': companyContact,
+    };
+  }
+
+  factory CompanyData.fromMap(Map<String, dynamic> map) {
+    return CompanyData(
+      companyName: map['companyName'],
+      companyContact: map['companyContact'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory CompanyData.fromJson(String source) =>
+      CompanyData.fromMap(json.decode(source));
 }
