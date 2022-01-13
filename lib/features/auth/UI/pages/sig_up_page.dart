@@ -51,7 +51,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (kDebugMode) {
-      emailTextEditingController.text = 'ola200@gmail.com';
+      emailTextEditingController.text = 'ola-kodx@gmail.com';
       passwordTextEditingController.text = '123456';
       firstNameTextEditingController.text = 'ola';
       lastNameTextEditingController.text = 'rider';

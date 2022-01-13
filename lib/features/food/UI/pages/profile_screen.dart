@@ -95,6 +95,11 @@ class ProfileScreen extends StatelessWidget {
                 );
               },
             ),
+            SizedBox(height: sizerSp(40.0)),
+            WalletOptionItemWidget(
+              title: 'Log Out',
+              callback: () => AuthenticationRepo().signOut(),
+            ),
           ],
         ),
       ),

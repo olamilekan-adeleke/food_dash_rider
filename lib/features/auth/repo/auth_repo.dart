@@ -144,6 +144,8 @@ class AuthenticationRepo {
       await localDatabaseRepo
           .saveUserDataToLocalDB(userDetailsForLocalDb.toMapForLocalDb());
     } catch (e, s) {
+      log(e.toString());
+      log(s.toString());
       errorLog(
         e.toString(),
         'Error signing up in user',
